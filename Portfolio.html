@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>은영 포트폴리오</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet" />
+  <style>
+  /* CSS 변수 선언 */
+  :root {
+    --bg-color: #FAFAFA;        /* 깨끗한 연한 회색 (배경) */
+    --main-color: #1F2937;      /* 어두운 네이비 블루 (헤더, 버튼 기본) */
+    --accent-color: #3B82F6;    /* 맑고 선명한 블루 (강조, 호버) */
+    --text-color: #111827;      /* 거의 검정에 가까운 진한 다크 그레이 (본문 텍스트) */
+    --card-bg: #FFFFFF;         /* 깨끗한 흰색 (카드 배경) */
+    --btn-hover-bg: #2563EB;    /* 조금 더 진한 블루 (버튼 호버) */
+  }
+
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Nanum Gothic', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* 헤더 - 네비게이션 */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--main-color);
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 100;
+  }
+
+  .nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .nav-link {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #D6E4FF; /* 헤더 배경 대비 밝은 파랑 */
+    position: relative;
+    padding-bottom: 0.2rem;
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--accent-color);
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: var(--accent-color);
+    bottom: 0;
+    left: 0;
+    border-radius: 5px;
+  }
+
+  /* 메인 컨테이너 패딩 상단 */
+  main {
+    padding-top: 70px;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* 소개 섹션 */
+  .about-section {
+    background-color: var(--bg-color);
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-container {
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    gap: 2.5rem;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .profile-photo {
+    flex: 1 1 200px;
+    max-width: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(74, 144, 226, 0.4);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  .profile-photo img {
+    width: 100%;
+    display: block;
+    border-radius: 50%;
+  }
+
+  .profile-photo:hover {
+    transform: translateY(-10px);
+  }
+
+  .about-text {
+    flex: 2 1 300px;
+    color: var(--text-color);
+    font-size: 1.1rem;
+  }
+
+  .about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-text p {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .about-text a {
+  color: var(--accent-color);
+  font-weight: 700;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.about-text a:hover {
+  color: var(--btn-hover-bg);
+}
+
+  .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.7rem 1.5rem;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+  }
+
+  .btn:hover {
+    background-color: var(--btn-hover-bg);
+    transform: scale(1.1);
+  }
+
+  /* 기술 스택 */
+  .stack-section {
+    margin-top: 5rem;
+    text-align: center;
+  }
+
+  .stack-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--accent-color);
+  }
+  .stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  max-width: 500px;   /* 넓이 제한으로 기술스택 영역 축소 */
+  margin: 0 auto;
+}
+
+.stack-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 0.7rem;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.15);
+  width: 80px;        /* 카드 크기 축소 */
+  text-align: center;
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+.stack-card img {
+  width: 30px;        /* 아이콘 크기 줄임 */
+  margin-bottom: 0.3rem;
+}
+
+.stack-card p {
+  font-weight: 600;
+  color: var(--accent-color);
+  font-size: 0.85rem;
+}
+
+.stack-card:hover {
+  transform: translateY(-6px);
+}
+
+
+
+  /* 프로젝트 섹션 */
+  .projects-section {
+    margin-top: 5rem;
+    text-align: center;
+  }
+
+  .projects-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--accent-color);
+  }
+
+  .projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(53, 122, 189, 0.2);
+    padding: 1.5rem;
+    width: 280px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .project-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+  }
+
+  .project-card p {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    color: #555;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .small-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    min-width: 75px;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .small-btn:hover {
+    background-color: var(--btn-hover-bg);
+    transform: scale(1.1);
+  }
+
+  /* 연락처 푸터 */
+  .contact-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: var(--main-color);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    font-weight: 600;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    user-select: none;
+  }
+
+  .contact-footer a {
+    color: white;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  /* fade-in 애니메이션 */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 반응형: 모바일 */
+  @media (max-width: 700px) {
+    .about-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .about-text {
+      flex: unset;
+    }
+    .projects-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .project-card {
+      width: 90%;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+
+    <header>
+    <nav class="nav-container">
+        <a href="#about" class="nav-link active">소개</a>
+        <a href="#stack" class="nav-link">기술 스택</a>
+        <a href="#projects" class="nav-link">프로젝트</a>
+        <a href="#contact" class="nav-link">연락처</a>
+    </nav>
+    </header>
+
+    <main>
+    <!-- 소개 섹션 -->
+    <section id="about" class="about-section fade-in">
+        <div class="about-container">
+        <div class="profile-photo">
+            <!--<img src="https://via.placeholder.com/200" alt="프로필 사진" />-->
+        </div>
+        <div class="about-text">
+            <h2>안녕하세요, 은영입니다 👋</h2>
+            <p>제 작업물은 
+                <a href="https://github.com/your_github_id" target="_blank" rel="noopener noreferrer">GitHub</a>와 
+                <a href="https://your_notion_blog_link" target="_blank" rel="noopener noreferrer">노션</a>
+                <a href="https://your_notion_blog_link" target="_blank" rel="noopener noreferrer">블로그</a>에서 확인하실 수 있습니다.
+            </p>
+            <a href="#projects" class="btn">프로젝트 보러가기</a>
+        </div>
+        </div>
+    </section>
+
+    <!-- 기술 스택 -->
+    <section id="stack" class="stack-section fade-in">
+        <h2>기술 스택</h2>
+        <div class="stack-grid">
+        <div class="stack-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+            <p>HTML5</p>
+        </div>
+        <div class="stack-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+            <p>CSS3</p>
+        </div>
+        <div class="stack-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+            <p>JavaScript</p>
+        </div>
+        <div class="stack-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
+            <p>React</p>
+        </div>
+        <div class="stack-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+            <p>GitHub</p>
+        </div>
+        <div class="stack-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
+            <p>Node.js</p>
+        </div>
+        </div>
+    </section>
+
+    <!-- 프로젝트 -->
+    <section id="projects" class="projects-section fade-in">
+        <h2>프로젝트 경험</h2>
+        <div class="projects-container">
+        <div class="project-card">
+            <h3>프로젝트 1</h3>
+            <p>간단한 소개와 주요 기능 설명이 들어갑니다.</p>
+            <div class="project-links">
+            <a href="#" target="_blank" class="btn small-btn">GitHub</a>
+            <a href="#" target="_blank" class="btn small-btn">노션</a>
+            <a href="#" target="_blank" class="btn small-btn">블로그</a>
+            </div>
+        </div>
+        <div class="project-card">
+            <h3>프로젝트 2</h3>
+            <p>간단한 소개와 주요 기능 설명이 들어갑니다.</p>
+            <div class="project-links">
+            <a href="#" target="_blank" class="btn small-btn">GitHub</a>
+            <a href="#" target="_blank" class="btn small-btn">노션</a>
+            <a href="#" target="_blank" class="btn small-btn">블로그</a>
+            </div>
+        </div>
+        <!-- 더 추가 가능 -->
+        </div>
+    </section>
+    </main>
+
+    <!-- 연락처 (푸터 고정) -->
+    <footer id="contact" class="contact-footer">
+    <p>이메일: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    </footer>
+
+    <script>
+    // 스크롤 시 fade-in 애니메이션
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+        threshold: 0,
+        rootMargin: "0px 0px -100px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('appear');
+        appearOnScroll.unobserve(entry.target);
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+
+    // 메뉴 active 클래스 토글
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = [...document.querySelectorAll('main > section')];
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+        const sectionTop = section.offsetTop - 80;
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+        });
+        navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+            link.classList.add('active');
+        }
+        });
+    });
+    </script>
+
+</body>
+</html>
