@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>은영 포트폴리오</title>
+  <title>my portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet" />
   <style>
   /* CSS 변수 선언 */
@@ -146,12 +146,12 @@
   .about-text a {
   color: var(--accent-color);
   font-weight: 700;
-  text-decoration: underline;
   transition: color 0.3s ease;
 }
 
 .about-text a:hover {
-  color: var(--btn-hover-bg);
+  color: var(--main-color);
+  
 }
 
   .btn {
@@ -175,13 +175,16 @@
   /* 기술 스택 */
   .stack-section {
     margin-top: 5rem;
+    padding: 4rem 1rem;
+    border-top: 1px solid #D1D5DB;
+    border-bottom: 1px solid #D1D5DB;
     text-align: center;
   }
 
   .stack-section h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
-    color: var(--accent-color);
+    color: #0a3791;
   }
   .stack-grid {
   display: grid;
@@ -229,7 +232,7 @@
   .projects-section h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
-    color: var(--accent-color);
+    color: #0a3791;
   }
 
   .projects-container {
@@ -278,7 +281,7 @@
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
     border-radius: 20px;
-    background-color: var(--accent-color);
+    background-color: var(--main-color);
     color: white;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -303,7 +306,6 @@
     color: white;
     text-align: center;
     padding: 1rem 0;
-    font-weight: 600;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
     user-select: none;
   }
@@ -325,6 +327,23 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  @keyframes wave {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  45% { transform: rotate(14deg); }
+  60% { transform: rotate(-4deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+    }
+
+    .wave-emoji {
+    display: inline-block;
+    animation: wave 2s ease-in-out 1;
+    transform-origin: 70% 70%;
+    }
+
 
   /* 반응형: 모바일 */
   @media (max-width: 700px) {
@@ -367,11 +386,11 @@
             <!--<img src="https://via.placeholder.com/200" alt="프로필 사진" />-->
         </div>
         <div class="about-text">
-            <h2>안녕하세요, 은영입니다 👋</h2>
+            <h2>안녕하세요, 은영입니다 <span class="wave-emoji">👋</span> </h2>
             <p>제 작업물은 
-                <a href="https://github.com/your_github_id" target="_blank" rel="noopener noreferrer">GitHub</a>와 
-                <a href="https://your_notion_blog_link" target="_blank" rel="noopener noreferrer">노션</a>
-                <a href="https://your_notion_blog_link" target="_blank" rel="noopener noreferrer">블로그</a>에서 확인하실 수 있습니다.
+                <a href="https://github.com/your_github_id" target="_blank" rel="noopener noreferrer"> 📂GitHub </a>와 
+                <a href="https://classy-oval-1c7.notion.site/LG-U-Why-Not-SW-Camp-7-1f300fd990d18059865dcca8bb8b6758" target="_blank" rel="noopener noreferrer"> 📝Notion </a>
+                <a href="https://your_notion_blog_link" target="_blank" rel="noopener noreferrer"> 📰Blog </a>에서 확인하실 수 있습니다.
             </p>
             <a href="#projects" class="btn">프로젝트 보러가기</a>
         </div>
@@ -415,6 +434,24 @@
         <div class="projects-container">
         <div class="project-card">
             <h3>프로젝트 1</h3>
+            <p>간단한 소개와 주요 기능 설명이 들어갑니다. 작성ㅎㅇㅇ.......................</p>
+            <div class="project-links">
+            <a href="#" target="_blank" class="btn small-btn">GitHub</a>
+            <a href="#" target="_blank" class="btn small-btn">노션</a>
+            <a href="#" target="_blank" class="btn small-btn">블로그</a>
+            </div>
+        </div>
+        <div class="project-card">
+            <h3>프로젝트 2</h3>
+            <p>간단한 소개와 주요 기능 설명이 들어갑니다.</p>
+            <div class="project-links">
+            <a href="#" target="_blank" class="btn small-btn">GitHub</a>
+            <a href="#" target="_blank" class="btn small-btn">노션</a>
+            <a href="#" target="_blank" class="btn small-btn">블로그</a>
+            </div>
+        </div>
+        <div class="project-card">
+            <h3>프로젝트 2</h3>
             <p>간단한 소개와 주요 기능 설명이 들어갑니다.</p>
             <div class="project-links">
             <a href="#" target="_blank" class="btn small-btn">GitHub</a>
@@ -433,14 +470,15 @@
         </div>
         <!-- 더 추가 가능 -->
         </div>
-    </section>
+    </section><br><br>
     </main>
 
     <!-- 연락처 (푸터 고정) -->
     <footer id="contact" class="contact-footer">
-    <p>이메일: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+        <p>&copy; 2025 은영 포트폴리오. All rights reserved.&nbsp; &nbsp; 이메일: <a href="mailto:lyy5795@gmail.com">lyy5795@gmail.com</a></p>
+        
     </footer>
-
+    
     <script>
     // 스크롤 시 fade-in 애니메이션
     const faders = document.querySelectorAll('.fade-in');
